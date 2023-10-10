@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-10-10-23',
+        'version' => 'dev-10-10-23',
+        'reference' => 'eb006eba24b3ed0345fe2550c1063a5213a7af72',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-10-10-23',
+            'version' => 'dev-10-10-23',
+            'reference' => 'eb006eba24b3ed0345fe2550c1063a5213a7af72',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -61,6 +61,15 @@
             'reference' => 'b2a62b4a85485fca9cf5fa61a933ad64006ff528',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/contracts',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'illuminate/database' => array(
+            'pretty_version' => 'v5.5.44',
+            'version' => '5.5.44.0',
+            'reference' => 'f5403b3dd774eb89ff0ef5e633e57458c3dc537d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../illuminate/database',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
