@@ -19,6 +19,10 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
         array (
             'app\\' => 4,
         ),
+        'W' => 
+        array (
+            'Whoops\\' => 7,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -36,6 +40,7 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
             'Psr\\Container\\' => 14,
             'PhpOption\\' => 10,
             'Philo\\Blade\\' => 12,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'I' => 
         array (
@@ -63,6 +68,10 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Whoops\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -111,6 +120,10 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
         'Philo\\Blade\\' => 
         array (
             0 => __DIR__ . '/..' . '/philo/laravel-blade/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Illuminate\\View\\' => 
         array (
