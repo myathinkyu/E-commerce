@@ -2,18 +2,22 @@
 
 namespace app\controllers;
 
-use app\controllers\baseController;
+use app\classes\request;
 
 class categoryController extends baseController
 {
     public function index()
     {
-        echo "I am index method of " . __CLASS__ . " class";
+        view("admin/category/create");
     }
 
     public function store()
     {
-        
+        beautify(Request::old("post","name"));
+        beautify($_POST);
+        beautify(request::all(true));
+        beautify(request::get("file"));
+        beautify(request::has("get"));
     }
 }
 

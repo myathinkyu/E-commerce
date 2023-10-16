@@ -7,12 +7,17 @@
 //use illuminate\database\capsule\manager as capsule;
 
 // use app\classes\Mail;
+use app\classes\session;
+use Illuminate\Contracts\Session\Session as SessionSession;
 
 require_once "../bootstrap/init.php";
 
+$con = session::has("name");
+var_dump($con);
 
-
-
+//session::add("name","mori");
+//session::remove("name");
+//echo $_SESSION["name"];
 
 // $mailer = new Mail;
 // $content = "Many PHP developers need to send email from their code. The only PHP function that supports this directly is mail(). However, it does not provide any assistance for making use of popular features such as encryption, authentication, HTML messages, and attachments.";
