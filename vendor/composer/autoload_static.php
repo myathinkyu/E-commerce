@@ -15,6 +15,10 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
     );
 
     public static $prefixLengthsPsr4 = array (
+        'v' => 
+        array (
+            'voku\\helper\\' => 12,
+        ),
         'a' => 
         array (
             'app\\' => 4,
@@ -65,6 +69,10 @@ class ComposerStaticInit0986a4ed82585979eaa8cc5744b27134
     );
 
     public static $prefixDirsPsr4 = array (
+        'voku\\helper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/voku/pagination/src/voku/helper',
+        ),
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',

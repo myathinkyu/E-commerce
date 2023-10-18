@@ -51,7 +51,7 @@ class validateRequest
     public function unique($column, $value, $policy)
     {
         if($value != null && !empty(trim($value))) {
-            return Capsule::table($policy)->where($column, $value)-> exists();
+            return !Capsule::table($policy)->where($column, $value)-> exists();
         }
     }
 

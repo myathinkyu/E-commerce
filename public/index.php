@@ -13,6 +13,9 @@ use app\classes\validateRequest;
 
 require_once "../bootstrap/init.php";
 
+//paginate(5, 10, "categories", new \app\controllers\categoryController());
+
+
 // $post = [
 //     "name" => "Mg Mg$",
 //     "age" => 2,

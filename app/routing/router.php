@@ -14,6 +14,8 @@ $router->map(method:"GET",route:"/admin/category/create",target:"app\controllers
 
 $router->map(method:"POST",route:"/admin/category/create",target:"app\controllers\CategoryController@store",name:"Category Store");
 
+$router->map(method:"GET",route:"/admin/category/[i:id]/delete",target:"app\controllers\CategoryController@delete",name:"Category Delete");
+
 $match = $router->match();
 
 // if($match){
