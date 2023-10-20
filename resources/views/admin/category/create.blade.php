@@ -86,9 +86,10 @@
                 <label for="name" class="english">Category Name</label>
                 <input type="text" class="form-control" id="edit-name" >
             </div>
-            <input type="hidden" name="edit-token" value="{{\app\classes\CSRFtoken::_token()}}">
+            <input type="hidden" id="edit-token" value="{{\app\classes\CSRFtoken::_token()}}">
+            <input type="hidden" id="edit-id">
             <div class="row justify-content-end no-gutters mt-2">
-                <button type="submit" class="btn btn-primary btn-sm english">Create</button>
+                <button class="btn btn-primary btn-sm english" onclick="startEdit(event)">Update</button>
             </div>
         </form>
         <!-- form end -->
@@ -103,8 +104,38 @@
 @section('script')
     <script>
         function fun(name, id){
+            $("#edit-name").val(name);
+            $("#edit-id").val(id);
             //alert("Name is " + name + " ID is "+ id);
             $("#CatUpdateModel") . modal("show");
+        }
+
+        function startEdit(e){
+            e.preventDefault();
+            name = $("#edit-name").val();
+            token = $("#edit-token").val();
+            id = $("#edit-id").val();
+
+            //console.log("Name is " + name + "<br> Token is " + token + "id is" + id);
+
+            $("#CatUpdateModel") . modal("hide");
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/E-commerce/public/admin/category/update',
+                data: {
+                    name: name,
+                    token: token,
+                    id: id
+                },
+                success: function(result){
+                    window.location.href="/E-commerce/public/admin/category/create";
+                },
+                error: function(response){
+                    var str = "";
+                    var resp = (JSON.parse(response.responseText));
+                    alert(resp.name);
+                }
+            });
         }
     </script>
 @endsection

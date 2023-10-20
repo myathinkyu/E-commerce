@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<!-- Model Start -->
+<!-- Modal Start -->
 <div class="modal" id="CatUpdateModel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -82,20 +82,62 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <!-- form start -->
+        <form>
+            <div class="form-group">
+                <label for="name" class="english">Category Name</label>
+                <input type="text" class="form-control" id="edit-name" >
+            </div>
+            <input type="hidden" id="edit-token" value="<?php echo e(\app\classes\CSRFtoken::_token()); ?>">
+            <input type="hidden" id="edit-id">
+            <div class="row justify-content-end no-gutters mt-2">
+                <button class="btn btn-primary btn-sm english" onclick="startEdit(event)">Update</button>
+            </div>
+        </form>
+        <!-- form end -->
       </div>
     </div>
   </div>
 </div>
-<!-- Model End -->
+<!-- Modal End -->
 <?php $__env->stopSection(); ?>
 
 
 <?php $__env->startSection('script'); ?>
     <script>
         function fun(name, id){
+            $("#edit-name").val(name);
+            $("#edit-id").val(id);
             //alert("Name is " + name + " ID is "+ id);
             $("#CatUpdateModel") . modal("show");
+        }
+
+        function startEdit(e){
+            e.preventDefault();
+            name = $("#edit-name").val();
+            token = $("#edit-token").val();
+            id = $("#edit-id").val();
+
+            //console.log("Name is " + name + "<br> Token is " + token + "id is" + id);
+
+            $("#CatUpdateModel") . modal("hide");
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/E-commerce/public/admin/category/update',
+                data: {
+                    name: name,
+                    token: token,
+                    id: id
+                },
+                success: function(result){
+                    window.location.href="/E-commerce/public/admin/category/create";
+                },
+                error: function(response){
+                    var str = "";
+                    var resp = (JSON.parse(response.responseText));
+                    alert(resp.name);
+                }
+            });
         }
     </script>
 <?php $__env->stopSection(); ?>
