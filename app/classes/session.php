@@ -51,8 +51,15 @@ class session
         {
             self::replace($key, $value);
         }else{
-            echo "<p class='alert alert-success'>".self::get($key)."</p>";
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>'.self::get($key).'</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>';
             self::remove($key);
+            // echo "<p class='alert alert-success'>".self::get($key)."</p>";
+            // self::remove($key);
         }
     }
 }
