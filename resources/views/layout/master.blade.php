@@ -21,7 +21,7 @@
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
-
+<script src="{{asset("js/custom.js")}}"></script>
 
 
 @yield('script') 

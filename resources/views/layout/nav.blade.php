@@ -13,10 +13,13 @@
                     <a class="nav-link text-white english" href="/E-commerce/public/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white english" href="#">Features</a>
+                    <a class="nav-link text-white english" href="/E-commerce/public/admin">Admin Panel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white english" href="/E-commerce/public/admin">Admin Panel</a>
+                    <a class="nav-link text-white english" href="/E-commerce/public/cart">
+                        Cart
+                        <span class="badge badge-danger badge-pill" style="position: relative; bottom:10px; left:-3px;" id="cart-count">0</span>
+                    </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white english" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,3 +35,5 @@
         </div>
     </nav>
 </div>
+
+@section('script')

@@ -7,6 +7,8 @@ $router = new AltoRouter();
 $router->setBasePath("/E-commerce/public");
 
 $router->map(method:"GET",route:"/",target:"app\controllers\IndexController@show",name:"Home Route");
+$router->map(method:"POST",route:"/cart",target:"app\controllers\IndexController@cart",name:"Cart Route");
+$router->map(method:"GET",route:"/cart",target:"app\controllers\IndexController@showCart",name:"Show Cart Route");
 
 //admin route
 $router->map(method:"GET",route:"/admin",target:"app\controllers\AdminController@index",name:"Admin Home");
@@ -23,6 +25,9 @@ $router->map(method:"GET",route:"/admin/subcategory/[i:id]/delete",target:"app\c
 $router->map(method:"GET",route:"/admin/product/home",target:"app\controllers\ProductController@home",name:"Product Home");
 $router->map(method:"GET",route:"/admin/product/create",target:"app\controllers\ProductController@create",name:"Product Create");
 $router->map(method:"POST",route:"/admin/product/create",target:"app\controllers\ProductController@store",name:"Product Store");
+$router->map(method:"GET",route:"/admin/product/[i:id]/edit",target:"app\controllers\ProductController@edit",name:"Product Edit");
+$router->map(method:"POST",route:"/admin/product/[i:id]/edit",target:"app\controllers\ProductController@update",name:"Product Update");
+$router->map(method:"GET",route:"/admin/product/[i:id]/delete",target:"app\controllers\ProductController@delete",name:"Product Delete");
 
 $match = $router->match();
 

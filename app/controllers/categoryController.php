@@ -6,7 +6,7 @@ use app\classes\CSRFtoken;
 use app\classes\redirect;
 use app\classes\request;
 use app\classes\session;
-use app\classes\updateFile;
+use app\classes\uploadFile;
 use app\classes\validateRequest;
 use app\models\category;
 use app\models\SubCategory;
@@ -109,7 +109,8 @@ class categoryController extends baseController
         }
     }
 
-    public function update(){
+    public function update()
+    {
         $post = request::get('post');
 
         $data = [

@@ -14,6 +14,7 @@
         cursor: pointer;
     }
 </style>
+
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4">
@@ -44,8 +45,8 @@
                             <td>{{$product->price}}</td>
                             
                             <td>
-                                <i class="fa fa-edit text-warning"></i>
-                                <i class="fa fa-trash text-danger"></i>
+                                <a href="/E-commerce/public/admin/product/{{$product->id}}/edit" class="text-warning"><i class="fa fa-edit text-warning"></i></a>
+                                <a href="/E-commerce/public/admin/product/{{$product->id}}/delete"><i class="fa fa-trash text-danger"></i></a>
                             </td>
                         </tr>
                     @endforeach

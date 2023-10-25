@@ -21,7 +21,7 @@
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
-
+<script src="<?php echo e(asset("js/custom.js")); ?>"></script>
 
 
 <?php echo $__env->yieldContent('script'); ?> 
