@@ -1,8 +1,8 @@
-<div class="container-fluid">
+
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
         <a class="navbar-brand text-white english" href="#">
             <img src="{{asset("images/projectlogo.png")}}" alt="" width="30" height="30" class="rounded">
-            <span class="ml-2">Online Shop</span>
+            <span class="ml-2">A L F R E D O</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-list text-white"></i>
@@ -23,17 +23,26 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white english" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown link
+                        @if(\app\classes\auth::check())
+                            {{\app\classes\auth::user()->name}}
+                        @else
+                            Member
+                        @endif
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                        @if(\app\classes\auth::check())
+                            <a class="dropdown-item" href="/E-commerce/public/user/logout">Logout</a>
+                        @else
+                            <a class="dropdown-item" href="/E-commerce/public/user/login">Login</a>
+                            <a class="dropdown-item" href="/E-commerce/public/user/register">Register</a>
+                        @endif
+                        
+                        
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-</div>
+
 
 @section('script')

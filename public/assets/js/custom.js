@@ -15,16 +15,22 @@
                 
             }
             alert("item already added to cart!");
+            //$("#cart-count").html(getCartItem().length);
             getCartItem();
+        }
+
+        function showCartItem(){
+            let ary = JSON.parse(localStorage.getItem("items"));
+            $("#cart-count").html(ary.length);
         }
 
         function getCartItem(){
             let ary = JSON.parse(localStorage.getItem("items"));
-            $("#cart-count").html(ary.length);
+            return ary;
         }
 
         function clearCart(){
             localStorage.removeItem("items");
         }
    
-getCartItem();
+showCartItem();
