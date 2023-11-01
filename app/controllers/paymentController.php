@@ -1,0 +1,38 @@
+<?php
+
+namespace app\controllers;
+
+use app\classes\request;
+use Stripe\Customer;
+use Stripe\Charge;
+
+class paymentController
+{
+    public function stripePayment()
+    {
+        $post = request::get("post");
+        $token = $post->stripeToken;
+        $email = $post->stripeEmail;
+
+        $customer = Customer::create([
+            "email" => $email,
+            "source" => $token
+        ]);
+
+        $charge = Charge::create([
+            'customer' => $customer->id,
+            'amount'   => 5000,
+            'currency' => 'usd',
+        ]);
+
+        $status = $charge->status;
+        
+        $index = new indexController();
+        $con = $index->saveItemsToDatabase($status, json_encode($charge));
+        if($con){
+            view("payment_success");
+        }else{
+            view("cart");
+        }
+    }
+}

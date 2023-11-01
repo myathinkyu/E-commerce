@@ -14,6 +14,8 @@ $router->map(method:"GET",route:"/cart",target:"app\controllers\IndexController@
 $router->map(method:"POST",route:"/payout",target:"app\controllers\IndexController@payout",name:"Payout Route");
 $router->map(method:"GET",route:"/product/[i:id]/detail",target:"app\controllers\IndexController@productDetail",name:"Product Detail Route");
 
+$router->map(method:"POST",route:"/payment/stripe", target:"app\controllers\PaymentController@stripePayment",name:"Stripe Payment Route");
+
 
 new routeDispatcher($router);
 

@@ -6,7 +6,10 @@ use app\classes\CSRFtoken;
 use app\models\Product;
 use app\classes\request;
 use app\classes\session;
-
+use app\models\OrderDetail;
+use app\classes\auth;
+use app\models\Order;
+use app\models\Payment;
 
 class indexController extends baseController
 {
@@ -38,25 +41,56 @@ class indexController extends baseController
     public function payout()
     {
         $post = Request::get('post');
-        $ary = [];
-        foreach($post->items as $item) {
-            $str = "item id " . $item->id . " qty " . $item->qty . " price ". $item->price;
-            array_push($ary, $str);
+       
+        if(CSRFtoken::checkToken($post->token)){
+            session::replace("cart-items", $post->items);
+            echo "Success";
+            exit;
+        }else{
+            echo "Token Mis Match Error!";
+            exit; 
         }
-        echo json_encode($ary);
-        exit;
-        // if(CSRFtoken::checkToken($post->token)){
-        //     if($this->saveOrder($post->items)){
-        //         echo "Success";
-        //         exit;
-        //     }else{
-        //         echo "Product Save Fail!";
-        //         exit;
-        //     }
-        // }else{
-        //     echo "Token Mis Match Error!";
-        //     exit; 
-        // }
+    }
+
+    public function saveItemsToDatabase($status="Pending",$extraData="")
+    {
+        $items = session::get("cart-items");
+        $order_number = uniqid();
+        $total = 0;
+        
+        foreach($items as $item){
+            $total += $item->qty * $item->price;
+            $od = new OrderDetail;
+           
+            $od->user_id = Auth::user()->id;
+            $od->product_id = $item->id;
+            $od->unit_price = $item->price;
+            $od->status = $status;
+            $od->quantity = $item->qty;
+            $od->total = $item->qty* $item->price;
+            $od->order_no = $order_number;
+
+            $od->save();
+        }
+
+        $order = new Order;
+        $order->user_id = auth::user()->id;
+        $order->order_no = $order_number;
+        $order->order_extra = $extraData;
+
+        $order->save();
+
+        $payment = new Payment();
+        $payment->user_id = auth::user()->id;
+        $payment->amount = $total;
+        $payment->status = $status;
+        $payment->order_no = $order_number;
+
+        if($payment->save()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function saveOrder($orders)

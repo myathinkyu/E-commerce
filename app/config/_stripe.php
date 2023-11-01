@@ -9,4 +9,4 @@ $stripe = [
 ];
 
 session::replace("publishable_key", $stripe["publishable_key"]);
-Stripe::setApiKey($stripe["stripe_key"]);
+Stripe::setApiKey($stripe["secret_key"]);

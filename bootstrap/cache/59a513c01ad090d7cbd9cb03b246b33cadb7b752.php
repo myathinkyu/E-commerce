@@ -20,8 +20,8 @@
         <div class="col-md-3">
             <div class="card mb-3">
                 <div class="card-header"><?php echo e($product->name); ?></div>
-                <div class="card-block">
-                    <img src="<?php echo e($product->image); ?>" alt="" width="120px" height="150px">
+                <div class="card-block text-center">
+                    <img src="<?php echo e($product->image); ?>" alt=""  width="120px" height="150px">
                 </div>
                 <div class="card-footer">
                     <div class="row justify-content-between">
@@ -45,7 +45,7 @@
         <div class="col-md-3">
             <div class="card mb-3">
                 <div class="card-header"><?php echo e($product->name); ?></div>
-                <div class="card-block">
+                <div class="card-block text-center">
                     <img src="<?php echo e($product->image); ?>" alt="" width="120px" height="150px">
                 </div>
                 <div class="card-footer">
