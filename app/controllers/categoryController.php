@@ -52,7 +52,10 @@ class categoryController extends baseController
                 $cates = Category::all()->count();
                 list($cats,$pages) = paginate(3, $cates, new category());
                 $cats = json_decode(json_encode($cats));
-                view("admin/category/create", compact('cats', 'pages'));
+                $subcates = SubCategory::all()->count();
+                list($sub_cats,$sub_pages) = paginate(3, $subcates, new SubCategory());
+                $sub_cats = json_decode(json_encode($sub_cats));
+                view("admin/category/create", compact('cats', 'pages', 'sub_cats', 'sub_pages'));
             }else{
                 $slug = slug($post->name);
 
@@ -65,14 +68,20 @@ class categoryController extends baseController
                     $cates = Category::all()->count();
                     list($cats,$pages) = paginate(3, $cates, new category());
                     $cats = json_decode(json_encode($cats));
+                    $subcates = SubCategory::all()->count();
+                    list($sub_cats,$sub_pages) = paginate(3, $subcates, new SubCategory());
+                    $sub_cats = json_decode(json_encode($sub_cats));
                     $success = "Category created successfully!";
-                    view("admin/category/create", compact('cats', 'success','pages'));
+                    view("admin/category/create", compact('cats', 'success','pages','sub_cats', 'sub_pages'));
                 }else{
                     $cates = Category::all()->count();
                     list($cats,$pages) = paginate(3, $cates, new category());
                     $cats = json_decode(json_encode($cats));
+                    $subcates = SubCategory::all()->count();
+                    list($sub_cats,$sub_pages) = paginate(3, $subcates, new SubCategory());
+                    $sub_cats = json_decode(json_encode($sub_cats));
                     $errors = "Category created successfully!";
-                    view("admin/category/create", compact('cats', 'errors', 'pages'));
+                    view("admin/category/create", compact('cats', 'errors', 'pages', 'sub_cats', 'sub_pages'));
                 }
 
                 // $category = new category();
