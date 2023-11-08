@@ -1,4 +1,4 @@
-<?php $__env->startSection("title","hello"); ?>
+<?php $__env->startSection("title","ALFREDO"); ?>
 
 <?php $__env->startSection('content'); ?>
 <style>

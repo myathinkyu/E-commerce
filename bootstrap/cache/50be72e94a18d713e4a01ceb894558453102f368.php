@@ -12,9 +12,16 @@
                 <li class="nav-item active">
                     <a class="nav-link text-white english" href="/E-commerce/public/">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white english" href="/E-commerce/public/admin">Admin Panel</a>
-                </li>
+
+                <?php if(\app\classes\auth::check()): ?>
+                    <?php if(app\classes\auth::user()->is_admin === 1): ?>      
+                        <li class="nav-item">
+                            <a class="nav-link text-white english" href="/E-commerce/public/admin">Admin Panel</a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
+
+
                 <li class="nav-item">
                     <a class="nav-link text-white english" href="/E-commerce/public/cart">
                         Cart

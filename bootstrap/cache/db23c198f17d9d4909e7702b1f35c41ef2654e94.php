@@ -24,7 +24,7 @@
                 <h4 class="mt-1"><?php echo e($product->name); ?></h4>
                 <p><?php echo e($product->description); ?></p>
                 <p class="text-black" style="font-size: 20px;">$<?php echo e($product->price); ?></p>
-                <button class="btn btn-success col-md-5">Add To Cart</button>
+                <button class="btn btn-success btn-sm col-4" onclick="addToCart('<?php echo e($product->id); ?>')">Add To Cart</button>
                 <p class="mt-3">
                 <span>
                     Rate :

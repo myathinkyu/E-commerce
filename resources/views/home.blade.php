@@ -1,6 +1,6 @@
 @extends("layout.master")
 
-@section("title","hello")
+@section("title","ALFREDO")
 
 @section('content')
 <style>

@@ -29,7 +29,18 @@ class userController
             if($user){
                 if(password_verify($post->password, $user->password)){
                     Session::add("user_id", $user->id);
-                    Redirect::to("/E-commerce/public/cart");
+                    //Redirect::to("/E-commerce/public/cart");
+                    if(password_verify($post->password, $user->password)) {
+                        Session::add("user_id", $user->id);
+                        if(Auth::user()->is_admin === 1) {
+                            Redirect::to("/E-Commerce/public/admin");
+                        }else {
+                            Redirect::to("/E-Commerce/public");
+                        }
+                    } else {
+                        Session::flash("error_message","Incorrect Password!");
+                        Redirect::to("/E-Commerce/public/user/login"); 
+                    }
                 }else{
                     Session::flash("error_message", "Password Error!");
                     Redirect::to("/E-commerce/public/user/login");
